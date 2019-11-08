@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -44,8 +45,10 @@ public class MainPage extends JFrame {
 	private JCheckBox chIsEducation = new JCheckBox("Education");
 	
 	JTextField txtRunnablePath = new JTextField();
+	JButton btnChooseRunnablePath = new JButton("choose");
 	
 	JTextField txtImagePath = new JTextField();
+	JButton btnChooseImagePath = new JButton("choose");
 	
 	JTextField txtPath = new JTextField();
 	
@@ -59,7 +62,7 @@ public class MainPage extends JFrame {
 	ArrayList<JComponent> components = new ArrayList<JComponent>();
 	ArrayList<JCheckBox> categoriesCheckBoxes = new ArrayList<JCheckBox>();
 	
-	//CONSTRUCTOR FOR PREPARE THE APPLICATION
+	//=============================================>CONSTRUCTOR FOR PREPARE THE APPLICATION
 	public MainPage() {
 		//MAKE NAME FIELD
 		JPanel panelName = new JPanel();//ADD THEM IN A JPANEL FOR SHOW IN NESSECARY STATE
@@ -173,9 +176,16 @@ public class MainPage extends JFrame {
 		lblRunnablePath.setBounds(10, 0, 110, 20);
 		panelRunnableAndImage.add(lblRunnablePath);
 		
-		txtRunnablePath.setBounds(10,30, 380, 30);
+		txtRunnablePath.setBounds(10,30, 300, 30);
 		components.add(txtRunnablePath);
 		panelRunnableAndImage.add(txtRunnablePath);
+		
+		btnChooseRunnablePath.setBounds(315,30,80,30);
+		btnChooseRunnablePath.addActionListener((ActionEvent e)->{
+			txtRunnablePath.setText(getPath());
+		});
+		components.add(btnChooseRunnablePath);
+		panelRunnableAndImage.add(btnChooseRunnablePath);
 		
 		//IAMGE FILE FIELD
 		JLabel lblImagePath = new JLabel("image:");
@@ -183,9 +193,16 @@ public class MainPage extends JFrame {
 		lblImagePath.setBounds(10, 65, 70, 20);
 		panelRunnableAndImage.add(lblImagePath);
 		
-		txtImagePath.setBounds(10, 90, 380, 30);
+		txtImagePath.setBounds(10, 90, 300, 30);
 		components.add(txtImagePath);
 		panelRunnableAndImage.add(txtImagePath);
+		
+		btnChooseImagePath.setBounds(315, 90, 80, 30);
+		btnChooseImagePath.addActionListener((ActionEvent e)->{
+			txtImagePath.setText(getPath());
+		});
+		components.add(btnChooseImagePath);
+		panelRunnableAndImage.add(btnChooseImagePath);
 		
 		//APPLICATION PATH FILED
 		JLabel lblPath = new JLabel("directory:");
@@ -226,7 +243,19 @@ public class MainPage extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
-	//GENERATE THE .DESKTOP FILE
+	//=================================>SHOW JFILECHOOSER THEN RETURN THE SELECTED FILE PATH
+	private String getPath() {
+		String path = "/";
+		File startedPoint = new File(path);
+		JFileChooser chooser = new JFileChooser(startedPoint);
+		int response = chooser.showDialog(null, "choose");
+		if(response == JFileChooser.APPROVE_OPTION) {
+			path = chooser.getSelectedFile().getAbsolutePath();
+		}
+		return path;
+	}
+	
+	//=================================>GENERATE THE .DESKTOP FILE
 	private void generate() {
 		//CHOOSE THE SHARE FOLDER DEPEND ON USER
 		String path = null;

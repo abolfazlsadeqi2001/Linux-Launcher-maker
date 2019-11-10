@@ -26,13 +26,13 @@ public class MainPage extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private final static String ICON_NAME = "icon.png";
-	
+
 	private JTextField txtName = new JTextField();
 	private JTextField txtComment = new JTextField();
 	private JTextField txtVersion = new JTextField();
-	
+
 	private JCheckBox chTerminal = new JCheckBox("");
-	
+
 	private JCheckBox chIsApplication = new JCheckBox("");
 	private JCheckBox chIsDevelopment = new JCheckBox("Development");
 	private JCheckBox chIsUtility = new JCheckBox("Utility");
@@ -43,98 +43,100 @@ public class MainPage extends JFrame {
 	private JCheckBox chIsSettings = new JCheckBox("Settings");
 	private JCheckBox chIsGame = new JCheckBox("Game");
 	private JCheckBox chIsEducation = new JCheckBox("Education");
-	
+
 	JTextField txtRunnablePath = new JTextField();
 	JButton btnChooseRunnablePath = new JButton("choose");
-	
+
 	JTextField txtImagePath = new JTextField();
 	JButton btnChooseImagePath = new JButton("choose");
-	
+
 	JTextField txtPath = new JTextField();
-	
+
 	JButton btnGenerate = new JButton("Generate");
-	
-	private static final String WHO_AM_I_CMD = "whoami";
+
 	private static final String ROOT_USER = "root";
 	private static final String SHARE_DESKTOP_FOLDER_ROOT = "/usr/share/applications/";
-	private static final String SHARE_DESKTOP_FOLDER_CURRENT_USER = System.getProperty("user.home") + "/.local/share/applications/";
-	
+	private static final String USER_NAME = System.getProperty("user.name");
+	private static final String SHARE_DESKTOP_FOLDER_CURRENT_USER = System.getProperty("user.home")
+			+ "/.local/share/applications/";
+
 	ArrayList<JComponent> components = new ArrayList<JComponent>();
 	ArrayList<JCheckBox> categoriesCheckBoxes = new ArrayList<JCheckBox>();
-	
-	//=============================================>CONSTRUCTOR FOR PREPARE THE APPLICATION
+
+	// =============================================>CONSTRUCTOR FOR PREPARE THE
+	// APPLICATION
 	public MainPage() {
-		//MAKE NAME FIELD
-		JPanel panelName = new JPanel();//ADD THEM IN A JPANEL FOR SHOW IN NESSECARY STATE
-		panelName.setBounds(0,0,400,37);
+		// MAKE NAME FIELD
+		JPanel panelName = new JPanel();// ADD THEM IN A JPANEL FOR SHOW IN NESSECARY STATE
+		panelName.setBounds(0, 0, 400, 37);
 		panelName.setLayout(null);
 		panelName.setBackground(Color.pink);
 		add(panelName);
-		
+
 		JLabel lblName = new JLabel("name:");
 		components.add(lblName);
-		lblName.setBounds(10,7,60,20);
+		lblName.setBounds(10, 7, 60, 20);
 		panelName.add(lblName);
-		
-		txtName.setBounds(70,3,200,30);
+
+		txtName.setBounds(70, 3, 200, 30);
 		components.add(txtName);
 		panelName.add(txtName);
-		
-		//MAKE COMMENT FIELD
+
+		// MAKE COMMENT FIELD
 		JLabel lblComment = new JLabel("comment:");
 		components.add(lblComment);
 		lblComment.setBounds(10, 45, 70, 20);
 		add(lblComment);
-		
-		txtComment.setBounds(80,40,300,30);
+
+		txtComment.setBounds(80, 40, 300, 30);
 		components.add(txtComment);
 		add(txtComment);
-		
-		//MAKE VERSION FIELD
+
+		// MAKE VERSION FIELD
 		JLabel lblVersion = new JLabel("version:");
 		components.add(lblVersion);
 		lblVersion.setBounds(10, 85, 60, 20);
 		add(lblVersion);
-		
+
 		txtVersion.setBounds(65, 80, 90, 30);
 		components.add(txtVersion);
 		add(txtVersion);
-		
-		//MAKE TERMINAL CHECK BOX FIELD
+
+		// MAKE TERMINAL CHECK BOX FIELD
 		JLabel lblTerminal = new JLabel("using in terminal:");
 		components.add(lblTerminal);
-		lblTerminal.setBounds(10,125,160,20);
+		lblTerminal.setBounds(10, 125, 160, 20);
 		add(lblTerminal);
-		
-		chTerminal.setBounds(130,125,30,20);
+
+		chTerminal.setBounds(130, 125, 30, 20);
 		components.add(chTerminal);
 		chTerminal.setSelected(true);
 		add(chTerminal);
-		
-		//MAKE IS IT APPLICATION
+
+		// MAKE IS IT APPLICATION
 		JLabel lblIsApp = new JLabel("is application:");
 		components.add(lblIsApp);
-		lblIsApp.setBounds(10,150,100,20);
+		lblIsApp.setBounds(10, 150, 100, 20);
 		add(lblIsApp);
-		
+
 		chIsApplication.setBounds(110, 150, 20, 20);
 		components.add(chIsApplication);
 		chIsApplication.setSelected(true);
 		add(chIsApplication);
-		
-		//MAKE CATEGORIES
+
+		// MAKE CATEGORIES
 		JLabel lblCategories = new JLabel("categories:");
 		components.add(lblCategories);
 		lblCategories.setBounds(10, 180, 100, 20);
 		add(lblCategories);
-		
-		JPanel panelCategories = new JPanel();//ADD THEM IN A JPANEL FOR SHOW IN NESSECARY STATE
-		panelCategories.setBounds(0,210,400,70);
+
+		JPanel panelCategories = new JPanel();// ADD THEM IN A JPANEL FOR SHOW IN NESSECARY STATE
+		panelCategories.setBounds(0, 210, 400, 70);
 		panelCategories.setLayout(new GridLayout(3, 3));
 		panelCategories.setBackground(Color.pink);
 		add(panelCategories);
-		
-		//ADD THE CHECK BOXES TO THE ARRAYS AND GRID PANEL
+
+		// ADD THE CHECK BOXES TO THE ARRAYS AND GRID PANEL
 		panelCategories.add(chIsAudioVideo);
 		categoriesCheckBoxes.add(chIsAudioVideo);
 		components.add(chIsAudioVideo);
@@ -162,67 +164,67 @@ public class MainPage extends JFrame {
 		panelCategories.add(chIsUtility);
 		categoriesCheckBoxes.add(chIsUtility);
 		components.add(chIsUtility);
-		
-		//PATHES
-		JPanel panelRunnableAndImage = new JPanel();//ADD THEM IN A PANLE TO SHOW THEM IN NESSECERAY STATE
+
+		// PATHES
+		JPanel panelRunnableAndImage = new JPanel();// ADD THEM IN A PANLE TO SHOW THEM IN NESSECERAY STATE
 		panelRunnableAndImage.setBackground(Color.pink);
 		panelRunnableAndImage.setBounds(0, 290, 400, 140);
 		panelRunnableAndImage.setLayout(null);
 		add(panelRunnableAndImage);
-		
-		//EXECUTABLE FILE FIELD
+
+		// EXECUTABLE FILE FIELD
 		JLabel lblRunnablePath = new JLabel("runnable file: ");
 		components.add(lblRunnablePath);
 		lblRunnablePath.setBounds(10, 0, 110, 20);
 		panelRunnableAndImage.add(lblRunnablePath);
-		
-		txtRunnablePath.setBounds(10,30, 300, 30);
+
+		txtRunnablePath.setBounds(10, 30, 300, 30);
 		components.add(txtRunnablePath);
 		panelRunnableAndImage.add(txtRunnablePath);
-		
-		btnChooseRunnablePath.setBounds(315,30,80,30);
-		btnChooseRunnablePath.addActionListener((ActionEvent e)->{
+
+		btnChooseRunnablePath.setBounds(315, 30, 80, 30);
+		btnChooseRunnablePath.addActionListener((ActionEvent e) -> {
 			txtRunnablePath.setText(getPath());
 		});
 		components.add(btnChooseRunnablePath);
 		panelRunnableAndImage.add(btnChooseRunnablePath);
-		
-		//IAMGE FILE FIELD
+
+		// IAMGE FILE FIELD
 		JLabel lblImagePath = new JLabel("image:");
 		components.add(lblImagePath);
 		lblImagePath.setBounds(10, 65, 70, 20);
 		panelRunnableAndImage.add(lblImagePath);
-		
+
 		txtImagePath.setBounds(10, 90, 300, 30);
 		components.add(txtImagePath);
 		panelRunnableAndImage.add(txtImagePath);
-		
+
 		btnChooseImagePath.setBounds(315, 90, 80, 30);
-		btnChooseImagePath.addActionListener((ActionEvent e)->{
+		btnChooseImagePath.addActionListener((ActionEvent e) -> {
 			txtImagePath.setText(getPath());
 		});
 		components.add(btnChooseImagePath);
 		panelRunnableAndImage.add(btnChooseImagePath);
-		
-		//APPLICATION PATH FILED
+
+		// APPLICATION PATH FILED
 		JLabel lblPath = new JLabel("directory:");
 		components.add(lblPath);
 		lblPath.setBounds(10, 440, 140, 20);
 		add(lblPath);
-		
+
 		txtPath.setBounds(10, 465, 380, 30);
 		components.add(txtPath);
 		add(txtPath);
-		
-		//GENERATE BUTTON
+
+		// GENERATE BUTTON
 		btnGenerate.setBounds(10, 510, 380, 40);
 		components.add(btnGenerate);
-		btnGenerate.addActionListener((ActionEvent e)->{
+		btnGenerate.addActionListener((ActionEvent e) -> {
 			generate();
 		});
 		add(btnGenerate);
-		
-		//CHANGE THE CONTENTS FONT
+
+		// CHANGE THE CONTENTS FONT
 		try {
 			Utilities.setFonts(components);
 		} catch (FontFormatException e1) {
@@ -230,82 +232,85 @@ public class MainPage extends JFrame {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
-		//CONFIGURE THE FRAME
+
+		// CONFIGURE THE FRAME
 		setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource(ICON_NAME)));
-		
+
 		setLayout(null);
 		setResizable(false);
-		setSize(400,600);
+		setSize(400, 600);
 		setLocationRelativeTo(null);
 		setTitle("launcher maker");
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-	
-	//=================================>SHOW JFILECHOOSER THEN RETURN THE SELECTED FILE PATH
+
+	// =================================>SHOW JFILECHOOSER THEN RETURN THE SELECTED
+	// FILE PATH
 	private String getPath() {
 		String path = "/";
 		File startedPoint = new File(path);
 		JFileChooser chooser = new JFileChooser(startedPoint);
 		int response = chooser.showDialog(null, "choose");
-		if(response == JFileChooser.APPROVE_OPTION) {
+		if (response == JFileChooser.APPROVE_OPTION) {
 			path = chooser.getSelectedFile().getAbsolutePath();
 		}
 		return path;
 	}
-	
-	//=================================>GENERATE THE .DESKTOP FILE
+
+	// =================================>GENERATE THE .DESKTOP FILE
 	private void generate() {
-		//CHOOSE THE SHARE FOLDER DEPEND ON USER
+		// CHOOSE THE SHARE FOLDER DEPEND ON USER
 		String path = null;
-		try {
-			if(Utilities.runCmd(WHO_AM_I_CMD).trim().equals(ROOT_USER)) {
-				path = SHARE_DESKTOP_FOLDER_ROOT;
-			}else {
-				JOptionPane.showMessageDialog(null, "you aren't root so that for show the launcher \nyou have to restart your computer to see them!");
-				path = SHARE_DESKTOP_FOLDER_CURRENT_USER;
-			}
-		} catch (IOException e) {
+		if (isRoot()) {
+			path = SHARE_DESKTOP_FOLDER_ROOT;
+		} else {
+			JOptionPane.showMessageDialog(null,
+					"you aren't root so that for show the launcher \nyou have to restart your computer to see them!");
 			path = SHARE_DESKTOP_FOLDER_CURRENT_USER;
-			e.printStackTrace();
 		}
-		
-		//WRITE THE CONTENT OF DESKTOP FILE
+
+		// WRITE THE CONTENT OF DESKTOP FILE
 		StringBuilder content = new StringBuilder("[Desktop Entry]\n");
-		content.append("Name="+txtName.getText()+"\n");
-		if(!txtVersion.getText().equals("")) {
-			content.append("Comment="+txtComment.getText()+"\n");
+		content.append("Name=" + txtName.getText() + "\n");
+		if (!txtVersion.getText().equals("")) {
+			content.append("Comment=" + txtComment.getText() + "\n");
 		}
-		if(!txtVersion.getText().equals("")) {
-			content.append("Version="+txtVersion.getText()+"\n");
+		if (!txtVersion.getText().equals("")) {
+			content.append("Version=" + txtVersion.getText() + "\n");
 		}
-		content.append("Exec="+txtRunnablePath.getText()+"\n");
-		content.append("Icon="+txtImagePath.getText()+"\n");
-		if(!txtPath.getText().equals("")) {
-			content.append("Path="+txtPath.getText()+"\n");
+		content.append("Exec=" + txtRunnablePath.getText() + "\n");
+		content.append("Icon=" + txtImagePath.getText() + "\n");
+		if (!txtPath.getText().equals("")) {
+			content.append("Path=" + txtPath.getText() + "\n");
 		}
-		content.append("Terminal="+chTerminal.isSelected()+"\n");
-		content.append("Type="+((chIsApplication.isSelected())?"Application":"non-Application")+"\n");
+		content.append("Terminal=" + chTerminal.isSelected() + "\n");
+		content.append("Type=" + ((chIsApplication.isSelected()) ? "Application" : "non-Application") + "\n");
 		content.append("Categories=");
-		for(JCheckBox chb : categoriesCheckBoxes) {
-			if(chb.isSelected()) {
-				content.append(chb.getText()+";");
+		for (JCheckBox chb : categoriesCheckBoxes) {
+			if (chb.isSelected()) {
+				content.append(chb.getText() + ";");
 			}
 		}
 		content.append("\n");
-		
-		//WRITE INTO .DESKTOP FILE
+
+		// WRITE INTO .DESKTOP FILE
 		try {
-			String fileName = txtName.getText().toLowerCase().replace(" ", "") + ".desktop";//change the name to lower case and without space
+			String fileName = txtName.getText().toLowerCase().replace(" ", "") + ".desktop";// change the name to lower
+																							// case and without space
 			File destinationFile = new File(path + "/" + fileName);
 			FileOutputStream fos = new FileOutputStream(destinationFile);
 			fos.write(content.toString().getBytes());
 			fos.close();
 			JOptionPane.showMessageDialog(null, "generated");
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Fail!","fail error",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Fail!", "fail error", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		}
+	}
+
+	// =================================>RETURN IS THE CURRENT USER IS ROOT
+	private boolean isRoot() {
+		return USER_NAME.trim().equalsIgnoreCase(ROOT_USER);
 	}
 }

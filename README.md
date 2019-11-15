@@ -11,3 +11,6 @@ you can make a launcher in launcher menu via this appilcatin :)
 - write at least the essential parts that highlighted by pink color
 	
 **Thank you for downloading :)**
+
+## Todos
+placed the non-compile files into resource folder
